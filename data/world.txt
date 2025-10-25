@@ -1,0 +1,10 @@
+[Room]
+Name=Dungeon Entrance
+Desc=A dark entrance with torches flickering.
+ExitNorth=Hallway
+
+[Room]
+Name=Hallway
+Desc=A narrow passage leading deeper underground.
+ExitSouth=Dungeon Entrance
+Item=Torch
