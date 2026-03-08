@@ -23,7 +23,7 @@ namespace text_adventure {
         }
     }
 
-    void SaveSystem::load(Player &player, std::vector<Room*> &rooms, const std::string &filename) {
+    void SaveSystem::load(Player &player, std::vector<Room*> &rooms, const std::vector<Item*> &allItems, const std::string &filename) {
         std::ifstream loadFile(filename);
         if (loadFile.is_open()) {
             std::string roomName;
@@ -38,12 +38,27 @@ namespace text_adventure {
 
             loadFile >> player.health;
             loadFile >> player.score;
+            loadFile.ignore(); // Consume the rest of the line
 
             // Clear current inventory
             player.inventory.clear();
 
-            // This is a simplified load. A real implementation would need to handle
-            // creating item objects again and adding them to the player's inventory.
+            std::string itemName;
+            while (std::getline(loadFile, itemName)) {
+                for (auto& item : allItems) {
+                    if (item->name == itemName) {
+                        player.inventory.push_back(item);
+                        break;
+                    }
+                }
+            }
+
+            // Remove loaded items from their original rooms
+            for (auto& itemInInventory : player.inventory) {
+                for (auto& room : rooms) {
+                    room->removeItem(itemInInventory->name);
+                }
+            }
 
             loadFile.close();
             std::cout << "Game loaded." << std::endl;

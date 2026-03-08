@@ -15,7 +15,7 @@ namespace text_adventure {
 
         Event(const std::string &condition, const std::string &effect);
 
-        void checkTrigger(Player &player);
+        void checkTrigger(Player &player, Room &room);
     };
 }
 

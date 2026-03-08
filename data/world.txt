@@ -1,10 +1,42 @@
+# World definition file for the Text Adventure Game
+
 [Room]
 Name=Dungeon Entrance
-Desc=A dark entrance with torches flickering.
+Desc=A dark stone chamber lit by flickering torches. A guard stands near the northern exit.
 ExitNorth=Hallway
+NPC=Guard
 
 [Room]
 Name=Hallway
-Desc=A narrow passage leading deeper underground.
+Desc=A narrow passage leading deeper underground. It's very dark and smells of damp earth.
 ExitSouth=Dungeon Entrance
-Item=Torch
+Item=torch
+
+[Room]
+Name=Treasure Room
+Desc=A small room filled with glittering treasure! A large chest sits in the center.
+ExitWest=Hallway
+Item=key
+
+# Items definitions
+[Item]
+Name=torch
+Desc=A wooden torch that lights your path.
+Usable=true
+Pickupable=true
+UseEffect=unlocks:east:Treasure Room
+UseTarget=Hallway
+
+[Item]
+Name=key
+Desc=A small, ornate iron key.
+Usable=true
+Pickupable=true
+UseEffect=opens:chest
+UseTarget=Treasure Room
+
+# NPC definitions
+[NPC]
+Name=Guard
+Dialogue=data/dialogues/guard.txt
+QuestGiver=false

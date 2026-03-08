@@ -6,11 +6,12 @@
 namespace text_adventure {
     class Player;
     class Room;
+    class Item;
 
     class SaveSystem {
     public:
         void save(const Player &player, const std::string &filename) const;
-        void load(Player &player, std::vector<Room*> &rooms, const std::string &filename);
+        void load(Player &player, std::vector<Room*> &rooms, const std::vector<Item*> &allItems, const std::string &filename);
     };
 }
 

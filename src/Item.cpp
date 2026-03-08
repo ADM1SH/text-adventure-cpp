@@ -4,8 +4,8 @@
 #include <iostream>
 
 namespace text_adventure {
-    Item::Item(const std::string &name, const std::string &description, bool isUsable, bool isPickupable)
-        : name(name), description(description), isUsable(isUsable), isPickupable(isPickupable) {}
+    Item::Item(const std::string &name, const std::string &description, const std::string &useEffect, const std::string &useTarget, bool isUsable, bool isPickupable)
+        : name(name), description(description), useEffect(useEffect), useTarget(useTarget), isUsable(isUsable), isPickupable(isPickupable) {}
 
     void Item::inspect() const {
         std::cout << description << std::endl;
@@ -13,14 +13,10 @@ namespace text_adventure {
 
     void Item::use(Room &room) {
         if (isUsable) {
-            if (this->name == "torch" && room.name == "Hallway") {
-                if (room.getExit("east") == nullptr) {
-                    std::cout << "The light reveals a hidden door to the east!" << std::endl;
-                } else {
-                    std::cout << "The door to the east is already revealed." << std::endl;
-                }
+            if (useTarget == room.name || useTarget.empty()) {
+                std::cout << "You use the " << name << "." << std::endl;
             } else {
-                std::cout << "You can't use this item in any special way right now." << std::endl;
+                std::cout << "You can't use this item here." << std::endl;
             }
         } else {
             std::cout << "You can't use this item." << std::endl;

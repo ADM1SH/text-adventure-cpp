@@ -6,6 +6,7 @@
 #include "Room.h"
 #include "Parser.h"
 #include "Command.h"
+#include "SaveSystem.h"
 
 namespace text_adventure {
     class Game {
@@ -13,8 +14,10 @@ namespace text_adventure {
         bool isRunning;
         Player player;
         std::vector<Room*> rooms;
+        std::vector<Item*> allItems;
         Parser parser;
         Room* currentRoom;
+        SaveSystem saveSystem;
 
         Game();
         ~Game();
