@@ -94,3 +94,19 @@ Developed by Adam Anwar. Designed to demonstrate object-oriented software patter
 ## License
 
 MIT License.
+
+
+## Roadmap
+* [x] Core architecture and baseline implementation.
+* [x] Functional verification and test coverage.
+* [ ] Add JSON-based room and quest script parser
+* [ ] Support player save-state persistence
+
+
+## Contributing
+Contributions are welcome.
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/improvement`.
+3. Commit your changes: `git commit -m "feat: enhance functionality"`.
+4. Push to the branch: `git push origin feature/improvement`.
+5. Open a Pull Request.
